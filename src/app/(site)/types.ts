@@ -34,3 +34,22 @@ export interface Project {
     video: null;
   };
 }
+
+export interface SingleProject {
+  _id: string;
+  title: string;
+  introduction: string;
+  content: any[];
+  seoTitle: string;
+  seoDescription: string;
+  seoImage: {
+    asset: {
+      _id: string;
+      url: string;
+      metadata: {
+        lqip: string;
+        dimensions: { width: number; height: number };
+      };
+    };
+  };
+}

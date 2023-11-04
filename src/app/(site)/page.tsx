@@ -9,8 +9,8 @@ export default async function Home() {
   if (!projects) return;
 
   return (
-    <main className="min-h-screen pt-14">
+    <>
       <LandingPageProjects projects={projects} />
-    </main>
+    </>
   );
 }

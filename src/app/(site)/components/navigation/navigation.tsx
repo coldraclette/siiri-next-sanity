@@ -8,9 +8,6 @@ export default function Navigation() {
         <a href="mailto:mail@siiritaennler.ch" className="subtitle">
           mail@siiritaennler.ch
         </a>
-        <a href="mailto:mail@siiritaennler.ch" className="subtitle-mobile">
-          E-mail
-        </a>
         <Link href="/information">Information</Link>
       </div>
     </nav>
