@@ -53,3 +53,24 @@ export interface SingleProject {
     };
   };
 }
+
+export interface ProjectContent {
+  _type: string;
+  _key: string;
+  alt?: string;
+  asset?: {
+    _ref: string;
+    _type: string;
+  };
+  dimensions?: {
+    _type: string;
+    width: number;
+    aspectRatio: number;
+    height: number;
+  };
+  lqip?: string;
+  url?: string;
+  markDefs?: any[];
+  children?: any[];
+  style?: string;
+}

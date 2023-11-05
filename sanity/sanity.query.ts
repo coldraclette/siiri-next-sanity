@@ -4,7 +4,15 @@ export async function getSingleProjectData(slug: string) {
   const query = `*[_type == "project" && slug.current == $slug][0] {
       title,
       introduction,
-      content,
+      "content": content[]{
+        ...,
+        _type == 'projectImage' => {
+          alt,
+          "lqip": asset->metadata.lqip,
+          "url": asset->url,
+          "dimensions": asset->metadata.dimensions
+        }, 
+      },
       seoTitle,
       seoDescription,
       "seoImage": seoImage.asset->{

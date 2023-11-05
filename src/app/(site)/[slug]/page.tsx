@@ -1,4 +1,6 @@
 import { getSingleProjectData } from '../../../../sanity/sanity.query';
+import ProjectContent from '../components/projectContent';
+import TextContent from '../components/textContent';
 import NotFound from '../not-found';
 import { SingleProject } from '../types';
 
@@ -19,5 +21,10 @@ export default async function Page({ params }: PageProps) {
     return <NotFound />;
   }
 
-  return <div className="mx-auto max-w-5xl px-2.5 md:px-5"></div>;
+  return (
+    <div className="mx-auto max-w-5xl px-2.5 md:px-5">
+      <TextContent content={project.introduction} />
+      <ProjectContent content={project.content} />
+    </div>
+  );
 }
