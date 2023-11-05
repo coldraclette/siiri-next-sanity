@@ -2,18 +2,35 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 
-import { ProjectContent } from '../types';
-import { urlForImage, urlForVideo } from '../../../../sanity/lib/image';
-
+import { urlForImage, urlForVideo } from '../../../../../sanity/lib/image';
 
 interface ProjectContentProps {
-  content: ProjectContent[];
+  content: {
+    _type: string;
+    _key: string;
+    alt?: string;
+    asset?: {
+      _ref: string;
+      _type: string;
+    };
+    dimensions?: {
+      _type: string;
+      width: number;
+      aspectRatio: number;
+      height: number;
+    };
+    lqip?: string;
+    url?: string;
+    markDefs?: any[];
+    children?: any[];
+    style?: string;
+  };
 }
 
 export default function ProjectContent({ content }: ProjectContentProps) {
   const components: PortableTextComponents = {
     block: {
-      normal: ({ children }) => <p className='mb-4'>{children}</p>,
+      normal: ({ children }) => <p className="mb-4">{children}</p>,
     },
     marks: {
       link: ({ children, value }) => {
@@ -39,7 +56,7 @@ export default function ProjectContent({ content }: ProjectContentProps) {
           return null;
         }
         return (
-          <div className='flex justify-center mb-4'>
+          <div className="mb-4 flex justify-center">
             <Image
               src={urlForImage(value.asset)}
               alt={value.alt || ' '}
@@ -59,10 +76,9 @@ export default function ProjectContent({ content }: ProjectContentProps) {
         return (
           <div className="mb-4">
             <video controls preload="auto" width="100%" className="mb-4">
-              <source src={urlForVideo(value)+"#t=000.1"} type="video/mp4" />
-            </video>    
+              <source src={urlForVideo(value) + '#t=000.1'} type="video/mp4" />
+            </video>
           </div>
-          
         );
       },
     },

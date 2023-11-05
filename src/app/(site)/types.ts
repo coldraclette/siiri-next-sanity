@@ -38,8 +38,8 @@ export interface Project {
 export interface SingleProject {
   _id: string;
   title: string;
-  introduction: string;
-  content: any[];
+  introduction: IntroductionContent[];
+  content: ProjectContent[];
   seoTitle: string;
   seoDescription: string;
   seoImage: {
@@ -73,4 +73,22 @@ export interface ProjectContent {
   markDefs?: any[];
   children?: any[];
   style?: string;
+}
+
+export interface IntroductionContent {
+  _type: string;
+  _key: string;
+  style: string;
+  markDefs: any[];
+  children: any[];
+}
+
+export interface PreviousProject {
+  _id: string;
+  slug: { current: string; _type: string };
+}
+
+export interface NextProject {
+  _id: string;
+  slug: { current: string; _type: string };
 }

@@ -15,7 +15,6 @@ export const urlForImage = (source: Image) => {
 
 export const urlForVideo = (video: any) => {
   const id = video.asset._ref;
-  console.log(video);
   return buildFileUrl(parseAssetId(id), {
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     dataset: 'production',

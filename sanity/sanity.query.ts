@@ -67,3 +67,25 @@ export async function getAllProjectWithPage() {
   const projects = await client.fetch(query);
   return projects;
 }
+
+export async function getProjectNavgation(slug: string) {
+  const query = `*[_type == "project" && hasProjectPage == true] | order(landingPageWeight desc) {
+    _id,
+    slug,
+  }`;
+
+  const projects = await client.fetch(query);
+
+  const currentIndex = projects.findIndex(
+    (project: any) => project.slug.current === slug
+  );
+
+  const prevIndex =
+    currentIndex - 1 >= 0 ? currentIndex - 1 : projects.length - 1;
+  const nextIndex = currentIndex + 1 < projects.length ? currentIndex + 1 : 0;
+
+  return {
+    prev: projects[prevIndex],
+    next: projects[nextIndex],
+  };
+}

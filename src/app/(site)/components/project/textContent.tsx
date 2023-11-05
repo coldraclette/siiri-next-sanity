@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 
-import { ProjectContent } from '../types';
+import { IntroductionContent } from '../../types';
 
 interface TextContentProps {
-  content: any;
+  content: IntroductionContent[];
 }
 
 export default function TextContent({ content }: TextContentProps) {
