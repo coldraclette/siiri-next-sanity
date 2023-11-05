@@ -92,3 +92,45 @@ export interface NextProject {
   _id: string;
   slug: { current: string; _type: string };
 }
+
+export interface InformationPage {
+  content: InformationPageContent[];
+  seoTitle: string;
+  seoDescription: string;
+  seoImage: {
+    asset: {
+      _id: string;
+      url: string;
+      metadata: {
+        lqip: string;
+        dimensions: { width: number; height: number };
+      };
+    };
+  };
+}
+
+export interface InformationPageContent {
+  _type: string;
+  _key: string;
+  style: string;
+  markDefs: any[];
+  children: any[];
+}
+
+export interface ProjectListItem {
+  _id: string;
+  title: string;
+  slug: { current: string; _type: string };
+  type: string;
+  published: {
+    name: string;
+    url: string;
+  };
+  year: string;
+  url: string;
+}
+
+export interface PublishedProps {
+  name: string;
+  url: string;
+}

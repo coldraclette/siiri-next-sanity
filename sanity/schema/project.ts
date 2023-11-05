@@ -52,6 +52,7 @@ export const project = {
       title: 'Landing page weight',
       type: 'number',
       group: 'projectGroup',
+      hidden: ({ parent }: any) => !parent.hasProjectPage,
       description:
         'The higher the number, the higher the project will appear on the landing page on mobile.',
     },

@@ -68,6 +68,21 @@ export async function getAllProjectWithPage() {
   return projects;
 }
 
+export async function getAllProjects() {
+  const query = `*[_type == "project"] | order(year desc, projectListWeight desc) {
+    _id,
+    title,
+    slug,
+    "type": type->title,
+    published,
+    year,
+    url
+  }`;
+
+  const projects = await client.fetch(query);
+  return projects;
+}
+
 export async function getProjectNavgation(slug: string) {
   const query = `*[_type == "project" && hasProjectPage == true] | order(landingPageWeight desc) {
     _id,
@@ -88,4 +103,23 @@ export async function getProjectNavgation(slug: string) {
     prev: projects[prevIndex],
     next: projects[nextIndex],
   };
+}
+
+export async function getInformationPageData() {
+  const query = `*[_type == "informationPage"][0] {
+    content,
+    seoTitle,
+    seoDescription,
+    "seoImage": seoImage.asset->{
+      _id,
+      url,
+      metadata {
+        lqip,
+        dimensions
+      }
+    }
+  }`;
+
+  const informationPage = await client.fetch(query);
+  return informationPage;
 }

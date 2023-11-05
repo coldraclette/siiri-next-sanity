@@ -27,13 +27,10 @@ export default async function Page({ params }: PageProps) {
 
   const { prev, next } = await getProjectNavgation(slug);
 
-  console.log('prev', prev);
-  console.log('next', next);
-
   return (
     <div className="mx-auto max-w-5xl px-2.5 md:px-5">
       <ProjectNavigation prev={prev} next={next} />
-      <TextContent content={project.introduction} />
+      <TextContent content={project.introduction} align="text-center" />
       <ProjectContent content={project.content} />
     </div>
   );

@@ -3,28 +3,10 @@ import Link from 'next/link';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 
 import { urlForImage, urlForVideo } from '../../../../../sanity/lib/image';
+import { ProjectContent } from '../../types';
 
 interface ProjectContentProps {
-  content: {
-    _type: string;
-    _key: string;
-    alt?: string;
-    asset?: {
-      _ref: string;
-      _type: string;
-    };
-    dimensions?: {
-      _type: string;
-      width: number;
-      aspectRatio: number;
-      height: number;
-    };
-    lqip?: string;
-    url?: string;
-    markDefs?: any[];
-    children?: any[];
-    style?: string;
-  };
+  content: ProjectContent[];
 }
 
 export default function ProjectContent({ content }: ProjectContentProps) {
