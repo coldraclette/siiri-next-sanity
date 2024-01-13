@@ -25,11 +25,15 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
       );
     }
 
-    return (
-      <Link className="hover:underline" href={`/${project.slug.current}`}>
-        {project.title}
-      </Link>
-    );
+    if (project.slug?.current) {
+      return (
+        <Link className="hover:underline" href={`/${project.slug?.current}`}>
+          {project.title}
+        </Link>
+      );
+    }
+
+    return project.title;
   };
 
   const renderPublisher = (publisher: PublishedProps) => {
