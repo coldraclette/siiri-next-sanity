@@ -10,9 +10,16 @@ export default function ProjectsMobile({ projects }: LandingPageProjects) {
     <div className="flex flex-col px-5">
       {projects.map((project: Project) => (
         <div key={project._id} className="grid-item">
-          <Link href={`/${project.slug.current}`}>
+          {project.slug ? (
+            <Link href={`/${project.slug.current}`}>
+              <LandingPageProjectImage
+                project={project}
+                imageKey="mobileImage"
+              />
+            </Link>
+          ) : (
             <LandingPageProjectImage project={project} imageKey="mobileImage" />
-          </Link>
+          )}
         </div>
       ))}
     </div>

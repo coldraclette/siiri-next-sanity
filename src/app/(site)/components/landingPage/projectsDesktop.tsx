@@ -38,12 +38,19 @@ export default function ProjectsDesktop({ projects }: LandingPageProjects) {
       {projects.map((project: Project) => {
         return (
           <div key={project._id} className="grid-item">
-            <Link href={`/${project.slug.current}`}>
+            {project.slug ? (
+              <Link href={`/${project.slug.current}`}>
+                <LandingPageProjectImage
+                  project={project}
+                  imageKey="desktopImage"
+                />
+              </Link>
+            ) : (
               <LandingPageProjectImage
                 project={project}
                 imageKey="desktopImage"
               />
-            </Link>
+            )}
           </div>
         );
       })}

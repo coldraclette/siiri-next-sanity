@@ -8,9 +8,5 @@ export default async function Home() {
   const projects: Project[] = await getAllProjectWithPage();
   if (!projects) return;
 
-  return (
-    <>
-      <LandingPageProjects projects={projects} />
-    </>
-  );
+  return <LandingPageProjects projects={projects} />;
 }

@@ -1,3 +1,5 @@
+import { Project } from '@/app/(site)/types';
+
 import { client } from './lib/client';
 
 export async function getSingleProjectData(slug: string) {
@@ -34,6 +36,7 @@ export async function getAllProjectWithPage() {
     _id,
     title,
     slug,
+    hasProjectPage,
     "thumbnail": {
       "desktopImage": {
         "asset": thumbnail.image.asset->{
@@ -89,11 +92,15 @@ export async function getProjectNavgation(slug: string) {
     slug,
   }`;
 
-  const projects = await client.fetch(query);
+  const projects: Project[] = await client.fetch(query);
 
   const currentIndex = projects.findIndex(
-    (project: any) => project.slug.current === slug
+    (project: any) => project.slug?.current === slug
   );
+
+  if (currentIndex === -1) {
+    return { prev: null, next: null };
+  }
 
   const prevIndex =
     currentIndex - 1 >= 0 ? currentIndex - 1 : projects.length - 1;
