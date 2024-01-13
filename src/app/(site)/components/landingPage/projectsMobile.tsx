@@ -25,4 +25,3 @@ export default function ProjectsMobile({ projects }: LandingPageProjects) {
     </div>
   );
 }
-
