@@ -34,7 +34,7 @@ export default function ProjectsDesktop({ projects }: LandingPageProjects) {
   }, []);
 
   return (
-    <div ref={gridRef} className="mx-auto grid px-2.5 md:px-5">
+    <div ref={gridRef} className="mx-auto grid">
       {projects.map((project: Project) => {
         return (
           <div key={project._id} className="grid-item mb-4">

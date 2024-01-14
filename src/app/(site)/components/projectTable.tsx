@@ -62,16 +62,16 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
       <h2>Project List</h2>
       <table className="mt-2">
         <thead>
-          <tr className="mb-2 grid grid-cols-4 gap-2">
+          <tr className="mb-2 grid grid-cols-4 md:grid-cols-[200px_1fr_1fr_1fr] gap-8">
             <th className="text-left font-normal">Type</th>
             <th className="text-left font-normal">Title</th>
-            <th className="text-left font-normal">Published By</th>
+            <th className="text-left font-normal">Published by</th>
             <th className="text-left font-normal">Year</th>
           </tr>
         </thead>
-        <tbody className="flex flex-col gap-2">
+        <tbody className="flex flex-col gap-1">
           {projects.map((project) => (
-            <tr key={project._id} className="grid grid-cols-4 gap-2">
+            <tr key={project._id} className="grid grid-cols-4 md:grid-cols-[200px_1fr_1fr_1fr] gap-8">
               <td>{project.type ? project.type : ''}</td>
               <td>{renderProjectTitle(project)}</td>
               <td>{renderPublisher(project.published)}</td>
