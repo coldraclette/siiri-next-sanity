@@ -6,7 +6,7 @@ import TextContent from '../components/project/textContent';
 import ProjectTable from '../components/projectTable';
 import { InformationPage, ProjectListItem } from '../types';
 
-export const revalidate = 120;
+export const revalidate = 60;
 
 export default async function Page() {
   const data: InformationPage = await getInformationPageData();

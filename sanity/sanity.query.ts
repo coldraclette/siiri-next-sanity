@@ -90,6 +90,7 @@ export async function getProjectNavgation(slug: string) {
   const query = `*[_type == "project" && hasProjectPage == true] | order(landingPageWeight desc) {
     _id,
     slug,
+    title
   }`;
 
   const projects: Project[] = await client.fetch(query);

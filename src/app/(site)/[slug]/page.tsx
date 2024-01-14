@@ -1,4 +1,5 @@
 import {
+  getAllProjectWithPage,
   getProjectNavgation,
   getSingleProjectData,
 } from '../../../../sanity/sanity.query';
@@ -8,7 +9,18 @@ import TextContent from '../components/project/textContent';
 import NotFound from '../not-found';
 import { SingleProject } from '../types';
 
-export const revalidate = 120;
+export const dynamicParams = true;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const data = await getAllProjectWithPage();
+
+  return data
+    .filter((project: any) => project.slug && project.slug.current)
+    .map((project: any) => ({
+      slug: project.slug.current,
+    }));
+}
 
 interface PageProps {
   params: {

@@ -46,6 +46,13 @@ export const project = {
         slugify: (input: string) =>
           input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
+      validation: (Rule: any) => Rule.custom((slug: { current: string } | undefined, context: { document: { hasProjectPage: boolean } }) => {
+        const hasProjectPage = context.document.hasProjectPage;
+        if (hasProjectPage && !slug) {
+          return 'Slug is required when project page is created';
+        }
+        return true;
+      })
     },
     {
       name: 'landingPageWeight',
