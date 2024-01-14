@@ -45,6 +45,7 @@ export default function ProjectContent({ content }: ProjectContentProps) {
               className="object-contain"
               width={value.dimensions.width}
               height={value.dimensions.height}
+              sizes="(min-width: 1140px) 984px, (min-width: 780px) calc(83.53vw + 48px), calc(100vw - 40px)"
             />
           </div>
         );
