@@ -32,11 +32,13 @@ export async function getSingleProjectData(slug: string) {
 }
 
 export async function getAllProjectWithPage() {
-  const query = `*[_type == "project" && hasProjectPage == true] | order(landingPageWeight desc) {
+  const query = `*[_type == "project" && hasProjectPage == true] {
     _id,
     title,
     slug,
+    landingPageWeight,
     hasProjectPage,
+    "sortedWeight": coalesce(landingPageWeight, 0),
     "thumbnail": {
       "desktopImage": {
         "asset": thumbnail.image.asset->{
@@ -65,7 +67,7 @@ export async function getAllProjectWithPage() {
         url
       }
     },
-  }`;
+  } | order(sortedWeight desc)`;
 
   const projects = await client.fetch(query);
   return projects;
@@ -114,7 +116,7 @@ export async function getProjectNavgation(slug: string) {
 }
 
 export async function getInformationPageData() {
-  const query = `*[_type == "informationPage"][0] {
+  const query = `*[_type == "informationPage"] | order(_createdAt desc)[0] {
     content,
     seoTitle,
     seoDescription,

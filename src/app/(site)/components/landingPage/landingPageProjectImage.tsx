@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { Project } from '../../types';
@@ -17,11 +16,13 @@ export const LandingPageProjectImage = ({
 
   return (
     <Image
+      quality={100}
       src={urlForImage(image)}
-      alt={project.thumbnail[imageKey].alt}
+      alt={project.thumbnail[imageKey].alt || project.title}
       className="object-contain"
       width={image.metadata.dimensions.width}
       height={image.metadata.dimensions.height}
+      sizes="(min-width: 1140px) 984px, (min-width: 780px) calc(83.53vw + 48px), calc(100vw - 40px)"
     />
   );
 };

@@ -6,6 +6,8 @@ export interface Project {
   _id: string;
   title: string;
   slug: { current: string; _type: string };
+  landingPageWeight: number;
+  sortedWeight: number;
   thumbnail: {
     desktopImage: {
       asset: {

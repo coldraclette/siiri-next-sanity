@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply text-sm font-sans antialiased leading-none;
+  @apply text-sm font-sans;
 }

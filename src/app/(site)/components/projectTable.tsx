@@ -65,11 +65,11 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
           <tr className="mb-2 grid grid-cols-4 gap-2">
             <th className="text-left font-normal">Type</th>
             <th className="text-left font-normal">Title</th>
-            <th className="text-left font-normal">Published</th>
+            <th className="text-left font-normal">Published By</th>
             <th className="text-left font-normal">Year</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="flex flex-col gap-2">
           {projects.map((project) => (
             <tr key={project._id} className="grid grid-cols-4 gap-2">
               <td>{project.type ? project.type : ''}</td>
