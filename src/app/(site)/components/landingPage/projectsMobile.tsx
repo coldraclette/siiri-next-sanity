@@ -7,7 +7,7 @@ import { LandingPageProjectImage } from './landingPageProjectImage';
 
 export default function ProjectsMobile({ projects }: LandingPageProjects) {
   return (
-    <div className="flex flex-col px-5">
+    <div className="flex flex-col px-5 gap-4">
       {projects.map((project: Project) => (
         <div key={project._id} className="grid-item">
           {project.slug ? (

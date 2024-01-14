@@ -45,8 +45,6 @@ export default function ProjectContent({ content }: ProjectContentProps) {
               className="object-contain"
               width={value.dimensions.width}
               height={value.dimensions.height}
-              placeholder="blur"
-              blurDataURL={value.lqip}
             />
           </div>
         );

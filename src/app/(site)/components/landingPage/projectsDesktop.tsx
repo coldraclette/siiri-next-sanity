@@ -37,7 +37,7 @@ export default function ProjectsDesktop({ projects }: LandingPageProjects) {
     <div ref={gridRef} className="mx-auto grid px-2.5 md:px-5">
       {projects.map((project: Project) => {
         return (
-          <div key={project._id} className="grid-item">
+          <div key={project._id} className="grid-item mb-4">
             {project.slug ? (
               <Link href={`/${project.slug.current}`}>
                 <LandingPageProjectImage

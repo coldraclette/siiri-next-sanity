@@ -60,7 +60,7 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
   return (
     <div className="mt-10 md:mt-20">
       <h2>Project List</h2>
-      <table className="mt-4">
+      <table className="mt-2">
         <thead>
           <tr className="mb-2 grid grid-cols-4 gap-2">
             <th className="text-left font-normal">Type</th>

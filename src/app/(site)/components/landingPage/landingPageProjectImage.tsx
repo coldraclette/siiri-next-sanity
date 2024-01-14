@@ -22,8 +22,6 @@ export const LandingPageProjectImage = ({
       className="object-contain"
       width={image.metadata.dimensions.width}
       height={image.metadata.dimensions.height}
-      placeholder="blur"
-      blurDataURL={image.metadata.lqip}
     />
   );
 };
