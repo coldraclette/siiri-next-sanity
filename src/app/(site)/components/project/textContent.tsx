@@ -43,7 +43,7 @@ export default function TextContent({
   };
 
   return (
-    <div className={`mb-8 leading-tight ${align}`}>
+    <div className={`mb-8 mt-1 leading-tight ${align}`}>
       <PortableText value={content} components={components} />
     </div>
   );

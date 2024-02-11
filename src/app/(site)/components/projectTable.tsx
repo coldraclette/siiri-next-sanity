@@ -61,21 +61,24 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
     <div className="mt-10 md:mt-20">
       <h2>Project List</h2>
       <table className="mt-2">
-        <thead>
-          <tr className="mb-2 grid grid-cols-4 md:grid-cols-[200px_1fr_1fr_1fr] gap-8">
+        <thead className="hidden md:block">
+          <tr className="mb-2 grid grid-cols-4 gap-8 md:grid-cols-[200px_1fr_1fr_1fr]">
             <th className="text-left font-normal">Type</th>
             <th className="text-left font-normal">Title</th>
             <th className="text-left font-normal">Published by</th>
             <th className="text-left font-normal">Year</th>
           </tr>
         </thead>
-        <tbody className="flex flex-col gap-1">
+        <tbody className="flex flex-col gap-4 md:gap-[2px]">
           {projects.map((project) => (
-            <tr key={project._id} className="grid grid-cols-4 md:grid-cols-[200px_1fr_1fr_1fr] gap-8">
-              <td>{project.type ? project.type : ''}</td>
-              <td>{renderProjectTitle(project)}</td>
-              <td>{renderPublisher(project.published)}</td>
-              <td>{project.year ? project.year : ''}</td>
+            <tr
+              key={project._id}
+              className="grid md:grid-cols-[200px_1fr_1fr_1fr] md:gap-8"
+            >
+              <p className="leading-4">{project.type ? project.type : ''}</p>
+              <p className="leading-4">{renderProjectTitle(project)}</p>
+              <p className="leading-4">{renderPublisher(project.published)}</p>
+              <p className="leading-4">{project.year ? project.year : ''}</p>
             </tr>
           ))}
         </tbody>
