@@ -69,7 +69,7 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
             <th className="text-left font-normal">Year</th>
           </tr>
         </thead>
-        <tbody className="flex flex-col gap-4 md:gap-[2px]">
+        <tbody className="flex flex-col gap-4 md:gap-[3px]">
           {projects.map((project) => (
             <tr
               key={project._id}
