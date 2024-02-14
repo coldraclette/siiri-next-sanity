@@ -47,6 +47,18 @@ export default function Modal({ modal, projects }: ModalProps) {
     });
   }, []);
 
+  const project = active && index !== null ? projects[index] : null;
+  const imageUrl = project?.thumbnail?.desktopImage?.asset?.url;
+  const imageAlt = project?.thumbnail?.desktopImage?.alt || 'Project image';
+  const imageDimensions =
+    project?.thumbnail?.desktopImage?.asset?.metadata?.dimensions;
+
+  const aspectRatio = imageDimensions
+    ? imageDimensions.width / imageDimensions.height
+    : 16 / 9;
+  const width = 300; // Fixed width for modal image
+  const height = width / aspectRatio;
+
   return (
     <motion.div
       ref={modalContainer}
@@ -55,13 +67,13 @@ export default function Modal({ modal, projects }: ModalProps) {
       animate={active ? 'enter' : 'closed'}
       className="modal-111 pointer-events-none absolute flex h-80 w-96 items-center justify-center"
     >
-      {active && index !== null && projects[index].projectImage ? (
+      {imageUrl ? (
         <div className="flex h-full w-full items-center justify-center">
           <Image
-            src={urlForImage(projects[index].projectImage)}
-            width={300}
-            height={0}
-            alt="image"
+            src={imageUrl}
+            alt={imageAlt}
+            width={width}
+            height={height}
             className="h-auto"
           />
         </div>
