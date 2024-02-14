@@ -46,30 +46,19 @@ export const project = {
         slugify: (input: string) =>
           input.toLowerCase().replace(/\s+/g, '-').slice(0, 200),
       },
-      validation: (Rule: any) => Rule.custom((slug: { current: string } | undefined, context: { document: { hasProjectPage: boolean } }) => {
-        const hasProjectPage = context.document.hasProjectPage;
-        if (hasProjectPage && !slug) {
-          return 'Slug is required when project page is created';
-        }
-        return true;
-      })
-    },
-    {
-      name: 'landingPageWeight',
-      title: 'Landing page weight',
-      type: 'number',
-      group: 'projectGroup',
-      hidden: ({ parent }: any) => !parent.hasProjectPage,
-      description:
-        'The higher the number, the higher the project will appear on the landing page on mobile.',
-    },
-    {
-      name: 'projectListWeight',
-      title: 'Project list weight',
-      type: 'number',
-      group: 'projectInformationGroup',
-      description:
-        'The higher the number, the higher the project will appear on the project list page. First projects will be order by year, then by weight.',
+      validation: (Rule: any) =>
+        Rule.custom(
+          (
+            slug: { current: string } | undefined,
+            context: { document: { hasProjectPage: boolean } }
+          ) => {
+            const hasProjectPage = context.document.hasProjectPage;
+            if (hasProjectPage && !slug) {
+              return 'Slug is required when project page is created';
+            }
+            return true;
+          }
+        ),
     },
     {
       name: 'type',

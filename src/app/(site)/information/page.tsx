@@ -1,6 +1,7 @@
 import {
   getAllProjects,
   getInformationPageData,
+  getProjectListData,
 } from '../../../../sanity/sanity.query';
 import TextContent from '../components/project/textContent';
 import ProjectTable from '../components/projectTable';
@@ -11,7 +12,7 @@ export const revalidate = 1;
 export default async function Page() {
   const data: InformationPage = await getInformationPageData();
 
-  const projects: ProjectListItem[] = await getAllProjects();
+  const projects: ProjectListItem[] = await getProjectListData();
 
   if (!data) {
     return null;

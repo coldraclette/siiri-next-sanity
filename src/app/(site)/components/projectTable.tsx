@@ -75,10 +75,10 @@ export default function ProjectTable({ projects }: ProjectsTableProps) {
               key={project._id}
               className="grid md:grid-cols-[200px_1fr_1fr_1fr] md:gap-8"
             >
-              <p className="leading-4">{project.type ? project.type : ''}</p>
-              <p className="leading-4">{renderProjectTitle(project)}</p>
-              <p className="leading-4">{renderPublisher(project.published)}</p>
-              <p className="leading-4">{project.year ? project.year : ''}</p>
+              <td className="leading-4">{project.type ? project.type : ''}</td>
+              <td className="leading-4">{renderProjectTitle(project)}</td>
+              <td className="leading-4">{renderPublisher(project.published)}</td>
+              <td className="leading-4">{project.year ? project.year : ''}</td>
             </tr>
           ))}
         </tbody>

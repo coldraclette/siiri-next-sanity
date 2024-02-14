@@ -23,6 +23,7 @@
     "@sanity/vision": "^3.19.1",
     "clsx": "^2.0.0",
     "codemirror": "^6.0.0",
+    "gsap": "^3.12.5",
     "isotope-layout": "^3.0.6",
     "next": "14.0.1",
     "next-sanity": "^5.5.10",

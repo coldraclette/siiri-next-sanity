@@ -1,6 +1,7 @@
 import { Project } from '@/app/(site)/types';
 
 import { client } from './lib/client';
+import { projectsList } from './schema/projectsList';
 
 export async function getSingleProjectData(slug: string) {
   const query = `*[_type == "project" && slug.current == $slug][0] {
@@ -29,6 +30,83 @@ export async function getSingleProjectData(slug: string) {
 
   const project = await client.fetch(query, { slug });
   return project;
+}
+
+export async function getProjectsListWithPage() {
+  const query = `*[_type == "projectsList"][0] {
+    "projectsList": projects[]->{
+      _id,
+      title,
+      slug,
+      hasProjectPage,
+      "thumbnail": {
+        "desktopImage": {
+          "asset": thumbnail.image.asset->{
+            _id,
+            url,
+            metadata {
+              lqip,
+              dimensions
+            }
+          },
+          "alt": thumbnail.image.alt
+        },
+        "mobileImage": {
+          "asset": thumbnail.mobileImage.asset->{
+            _id,
+            url,
+            metadata {
+              lqip,
+              dimensions
+            }
+          },
+          "alt": thumbnail.mobileImage.alt
+        },
+        "video": thumbnail.video.asset->{
+          _id,
+          url
+        }
+      }
+    }
+  }`;
+
+  let { projectsList } = await client.fetch(query);
+
+  const filteredData = projectsList
+    .map((project: any) => (project.hasProjectPage ? project : null))
+    .filter((project: any) => project !== null);
+
+  return filteredData;
+}
+
+export async function getProjectListData() {
+  const query = `*[_type == "projectsList"][0] {
+    "projectsList": projects[]->{
+      _id,
+      title,
+      slug,
+      "type": type->title,
+      published,
+      year,
+      url,
+      "thumbnail": {
+        "desktopImage": {
+          "asset": thumbnail.image.asset->{
+            _id,
+            url,
+            metadata {
+              lqip,
+              dimensions
+            }
+          },
+          "alt": thumbnail.image.alt
+        },
+      }
+    }
+  }`;
+
+  const { projectsList } = await client.fetch(query);
+  return projectsList;
 }
 
 export async function getAllProjectWithPage() {

@@ -22,7 +22,7 @@ export const LandingPageProjectImage = ({
       className="object-contain"
       width={image.metadata.dimensions.width}
       height={image.metadata.dimensions.height}
-      sizes="(min-width: 1140px) 984px, (min-width: 780px) calc(83.53vw + 48px), calc(100vw - 40px)"
+      // sizes="(min-width: 1140px) 984px, (min-width: 780px) calc(83.53vw + 48px), calc(100vw - 40px)"
     />
   );
 };
