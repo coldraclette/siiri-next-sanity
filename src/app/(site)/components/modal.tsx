@@ -53,12 +53,6 @@ export default function Modal({ modal, projects }: ModalProps) {
   const imageDimensions =
     project?.thumbnail?.desktopImage?.asset?.metadata?.dimensions;
 
-  const aspectRatio = imageDimensions
-    ? imageDimensions.width / imageDimensions.height
-    : 16 / 9;
-  const width = 300; // Fixed width for modal image
-  const height = width / aspectRatio;
-
   return (
     <motion.div
       ref={modalContainer}
@@ -72,8 +66,8 @@ export default function Modal({ modal, projects }: ModalProps) {
           <Image
             src={imageUrl}
             alt={imageAlt}
-            width={width}
-            height={height}
+            width={imageDimensions?.width}
+            height={imageDimensions?.height}
             className="h-auto"
           />
         </div>
