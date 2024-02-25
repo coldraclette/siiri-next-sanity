@@ -7,6 +7,7 @@ export async function getSingleProjectData(slug: string) {
   const query = `*[_type == "project" && slug.current == $slug][0] {
       title,
       introduction,
+      thumbnail,
       "content": content[]{
         ...,
         _type == 'projectImage' => {

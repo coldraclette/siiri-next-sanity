@@ -1,3 +1,4 @@
+import { urlForImage } from '../../../../sanity/lib/image';
 import {
   getAllProjectWithPage,
   getProjectNavgation,
@@ -7,10 +8,50 @@ import ProjectContent from '../components/project/projectContent';
 import ProjectNavigation from '../components/project/projectNavigation';
 import TextContent from '../components/project/textContent';
 import NotFound from '../not-found';
+import { siteConfig } from '../site.config';
 import { SingleProject } from '../types';
 
 export const dynamicParams = true;
 export const revalidate = 60;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
+  const data = await getSingleProjectData(slug);
+  if (!data) return;
+
+  return {
+    title: {
+      default: data.seoTitle || siteConfig.title,
+    },
+    description: data.seoDescription || siteConfig.description,
+    openGraph: {
+      type: 'website',
+      url: siteConfig.siteUrl,
+      title: data.seoTitle || siteConfig.title,
+      description: data.seoDescription || siteConfig.description,
+      siteName: siteConfig.siteUrlShort,
+      images: [
+        {
+          url: urlForImage(
+            data.seoImage || data.thumbnail?.mobileImage,
+            1200,
+            630
+          ),
+          width: 1200,
+          height: 630,
+          alt: siteConfig.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const data = await getAllProjectWithPage();
