@@ -1,12 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
 import useWindowSize from '../../hooks/useWindowSize';
-import { LandingPageProjects } from '../../types';
+import { Project } from '../../types';
 import ProjectsDesktop from './projectsDesktop';
 import ProjectsMobile from './projectsMobile';
 
-export default function LandingPageProjects({ projects }: LandingPageProjects) {
+interface LandingPageProjectsProps {
+  projects: Project[];
+}
+
+export default function LandingPageProjects({
+  projects,
+}: LandingPageProjectsProps) {
   const [width, setWidth] = useState<number | null>(null);
   const windowSize = useWindowSize();
 

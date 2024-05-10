@@ -1,13 +1,6 @@
 import { client } from '../../../../sanity/lib/client';
 
 /**
- * The API URL
- * INFO: Create a rest endpoint for the sitemap in Drupal
- *
- * @type {string}
- */
-const API_URL = `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/rest/sitemap`;
-/**
  * Create the response.
  * @param {string} body The response body
  *
@@ -52,11 +45,10 @@ export function generateSitemap(url, data, priority = 0.5) {
 /**
  * Get the sitemap data - Projects data.
  * @return {Promise} Promise object represents the sitemap data
- */
+ * */
 export async function getSitemapProjectsData() {
   const projects = await client.fetch(
-    `*[_type == "project" && hasProjectPage == true]`,
-    { next: { revalidate: 43200 } }
+    `*[_type == "project" && hasProjectPage == true]`
   );
 
   return projects;

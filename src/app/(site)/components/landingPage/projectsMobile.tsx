@@ -1,9 +1,13 @@
 import Link from 'next/link';
 
-import { LandingPageProjects, Project } from '../../types';
+import { Project } from '../../types';
 import { LandingPageProjectImage } from './landingPageProjectImage';
 
-export default function ProjectsMobile({ projects }: LandingPageProjects) {
+interface ProjectsMobileProps {
+  projects: Project[];
+}
+
+export default function ProjectsMobile({ projects }: ProjectsMobileProps) {
   return (
     <div className="flex flex-col gap-4 px-5">
       {projects.map((project: Project) => (

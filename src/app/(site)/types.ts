@@ -1,6 +1,3 @@
-export interface LandingPageProjects {
-  projects: Project[];
-}
 
 export interface Project {
   _id: string;
@@ -41,7 +38,7 @@ export interface SingleProject {
   _id: string;
   title: string;
   introduction: IntroductionContent[];
-  content: ProjectContent[];
+  content: Content[];
   seoTitle: string;
   seoDescription: string;
   seoImage: {
@@ -56,7 +53,7 @@ export interface SingleProject {
   };
 }
 
-export interface ProjectContent {
+export interface Content {
   _type: string;
   _key: string;
   alt?: string;

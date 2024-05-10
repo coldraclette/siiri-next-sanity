@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 
 import { urlForImage, urlForVideo } from '../../../../../sanity/lib/image';
-import { ProjectContent } from '../../types';
+import { Content } from '../../types';
 
 interface ProjectContentProps {
-  content: ProjectContent[];
+  content: Content[];
 }
 
 export default function ProjectContent({ content }: ProjectContentProps) {

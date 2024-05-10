@@ -2,10 +2,14 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { LandingPageProjects, Project } from '../../types';
+import { Project } from '../../types';
 import { LandingPageProjectImage } from './landingPageProjectImage';
 
-export default function ProjectsDesktop({ projects }: LandingPageProjects) {
+interface ProjectsDesktopProps {
+  projects: Project[];
+}
+
+export default function ProjectsDesktop({ projects }: ProjectsDesktopProps) {
   const gridRef = useRef(null);
 
   const initializeIsotope = () => {
